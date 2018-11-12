@@ -1,0 +1,28 @@
+﻿@using System.Configuration
+@model PodFull.Web.Models.ViewModels.EpisodePageViewModel
+
+<div class="post-header">
+    <h2>@Model.Title</h2>
+    <p>@Model.PostedTime.ToString("dd MMM yyyy")</p>
+
+    @if (User.Identity.IsAuthenticated)
+    {
+        //admin layout settings area. The delete will need confirmation popup
+        <ul>
+            <li>@Html.ActionLink("edit post", "Edit", "Submit", new { id = Model.Id }, null)</li>
+            <li>@Html.ActionLink("delete post", "DeletePost", "Submit", new { id = Model.Id }, new { onclick = "return confirm('Are you sure?')" })</li>
+        </ul>
+    }
+</div>
+
+@if (!string.IsNullOrWhiteSpace(Model.EmbedUrl))
+{
+    <div class="post-soundcloud">
+        <iframe width="100%" height="166" scrolling="no" frameborder="no" allow="autoplay"
+                src="https://w.soundcloud.com/player/?url=https%3A//api.soundcloud.com/tracks/@Model.EmbedUrl&color=%23ff5500&auto_play=false&hide_related=true&show_comments=true&show_user=true&show_reposts=true&show_teaser=false"></iframe>
+    </div>
+}
+
+<div class="post-body">
+    <p>@Html.Raw(Model.BodyHtml)</p>
+</div>

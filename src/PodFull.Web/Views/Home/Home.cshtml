@@ -1,0 +1,49 @@
+﻿@model PodFull.Web.Models.ViewModels.HomePageViewModel
+
+@{
+    if (Model.EpisodePosts?.Count() > 0)
+    {
+        foreach (var post in Model.EpisodePosts)
+        {
+            <div class="post-card">
+                <h2>
+                    <a href="/episode/@post.Id">@post.Title</a>
+                </h2>
+                <i>@post.PostedTime.ToString("dd MMM yyyy")</i>
+                <div class="post-summary">
+                    <p>@Html.Raw(post.MetaDescEpisode)</p>
+                </div>
+            </div>
+        }
+    }
+    else
+    {
+        <p>Sorry, there are no results to show.</p>
+    }
+
+    //this is a direct home page
+    //should we show paging section
+    if (Model.Page > 0 || Model?.EpisodePosts?.Count() == 10)
+    {
+        <div class="paging-container">
+            @if (Model.Page > 0)
+            {
+                //show back paging button
+                if (Model.Page - 1 == 0)
+                {
+                    <a href="/" class="blog-link-previous">Previous</a>
+                }
+                else
+                {
+                    <a href="/@(Model.Page-1)" class="blog-link-previous">Previous</a>
+                }
+            }
+
+            @if (Model?.EpisodePosts?.Count() == 10)
+            {
+                //show next button
+                <a href="/@(Model.Page+1)" class="blog-link-next">Next</a>
+            }
+        </div>
+    }
+}

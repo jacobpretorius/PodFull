@@ -1,0 +1,44 @@
+﻿@model PodFull.Web.Models.ViewModels.SettingsPageViewModel
+
+@using (Html.BeginForm("SubmitSettings", "Admin", FormMethod.Post, new { enctype = "multipart/form-data", @class = "submit-edit__form" }))
+{
+    @Html.AntiForgeryToken()
+
+    <h3>Admin Settings</h3>
+    <span>
+        @Html.LabelFor(m => m.SiteName, "Site Name")
+        @Html.TextBoxFor(m => m.SiteName, new { placeholder = "", @class = "submit-edit__input", required = true, autocomplete = "off" })
+    </span>
+    <span>
+        @Html.LabelFor(m => m.TagLine, "Tag Line")
+        @Html.TextBoxFor(m => m.TagLine, new { placeholder = "", @class = "submit-edit__input", required = true, autocomplete = "off" })
+    </span>
+    <span>
+        @Html.LabelFor(m => m.DefaultWindowTitle, "Default Window Title")
+        @Html.TextBoxFor(m => m.DefaultWindowTitle, new { placeholder = "", @class = "submit-edit__input", required = true, autocomplete = "off" })
+    </span>
+    <span>
+        @Html.LabelFor(m => m.DefaultMetaDescription, "Default Meta Description")
+        @Html.TextAreaFor(m => m.DefaultMetaDescription, 5, 10, new { placeholder = "", @class = "submit-edit__area", required = true, autocomplete = "off" })
+    </span>
+
+    <span>
+        @Html.LabelFor(m => m.RssTitle, "RSS Feed Link Title")
+        @Html.TextBoxFor(m => m.RssTitle, new { placeholder = "RSS FEED", @class = "submit-edit__input", autocomplete = "off" })
+    </span>
+    <span>
+        @Html.LabelFor(m => m.RssUrl, "RSS Feed Link Url")
+        @Html.TextBoxFor(m => m.RssUrl, new { placeholder = "http://jcpretorius.com/rss", @class = "submit-edit__input", autocomplete = "off" })
+    </span>
+
+    <span>
+        @Html.LabelFor(m => m.iTunesTitle, "iTunes Link Title")
+        @Html.TextBoxFor(m => m.iTunesTitle, new { placeholder = "Listen on Itunes", @class = "submit-edit__input", autocomplete = "off" })
+    </span>
+    <span>
+        @Html.LabelFor(m => m.iTunesUrl, "iTunes Link Title")
+        @Html.TextBoxFor(m => m.iTunesUrl, new { placeholder = "http://jcpretorius.com/itunes", @class = "submit-edit__input", autocomplete = "off" })
+    </span>
+
+    <input id="btnSubmit" class="submit-edit__submit pull-right" type="submit" value="Save" />
+}
