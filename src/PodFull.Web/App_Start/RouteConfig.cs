@@ -19,7 +19,7 @@ namespace PodFull.Web
 
 			routes.MapRoute(
 				"homePaging",
-				"home/{pager}",
+				"episodes/{pager}",
 				new { controller = "Home", action = "Index" }
 			);
 

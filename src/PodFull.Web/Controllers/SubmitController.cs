@@ -56,7 +56,7 @@ namespace PodFull.Web.Controllers
 					EmbedUrl = currentPage.EmbedUrl
 				});
 
-				return RedirectToAction("Index", "Home", new { currentPage.Id });
+				return RedirectToAction("Index", "Episode", new { currentPage.Id });
 			}
 
 			//not valid

@@ -35,14 +35,14 @@
                 }
                 else
                 {
-                    <a href="/@(Model.Page-1)" class="blog-link-previous">Previous</a>
+                    <a href="/episodes/@(Model.Page-1)" class="blog-link-previous">Previous</a>
                 }
             }
 
             @if (Model?.EpisodePosts?.Count() == 10)
             {
                 //show next button
-                <a href="/@(Model.Page+1)" class="blog-link-next">Next</a>
+                <a href="/episodes/@(Model.Page+1)" class="blog-link-next">Next</a>
             }
         </div>
     }
